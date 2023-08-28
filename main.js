@@ -7,6 +7,7 @@ for (let x = 0; x < image.width; x++) {
         image.pixels[y * image.width + x] = getPixelColor(x, y);
         // console.log(image.pixels[y * image.width + x]);
     }
+    console.log(`Percent Done: ${x / image.width}%`);
 }
 image.write();
 
@@ -29,22 +30,26 @@ function getPixelColor(x, y) {
     // Image4.png
     // r = (image.width / 3 < x && x < 2 * image.width / 3) ||
     //     (image.height / 3 < y && y < 2 * image.height / 3) ? 254 : 0;
-    // g = (image.width / 12 < x && x < 3 * image.width / 12) ||
-    //     (image.height / 12 < y && y < 3 * image.height / 12) ||
-    //     (9 * image.width / 12 < x && x < 11 * image.width / 12) ||
-    //     (9 * image.height / 12 < y && y < 11 * image.height / 12) ? 254 : 0;
-    // b = (image.width / 36 < x && x < 2 * image.width / 36) ||
-    //     (image.height / 36 < y && y < 2 * image.height / 36) ||
-    //     (10 * image.width / 36 < x && x < 11 * image.width / 36) ||
-    //     (10 * image.height / 36 < y && y < 11 * image.height / 36) ||
-    //     (25 * image.width / 36 < x && x < 26 * image.width / 36) ||
-    //     (25 * image.height / 36 < y && y < 26 * image.height / 36) ||
-    //     (34 * image.width / 36 < x && x < 35 * image.width / 36) ||
-    //     (34 * image.height / 36 < y && y < 35 * image.height / 36) ? 254 : 0;
+    // g = (image.width / 9 < x && x < 2 * image.width / 9) ||
+    //     (image.height / 9 < y && y < 2 * image.height / 9) ||
+    //     (7 * image.width / 9 < x && x < 8 * image.width / 9) ||
+    //     (7 * image.height / 9 < y && y < 8 * image.height / 9) ? 254 : 0;
+    // b = (image.width / 27 < x && x < 2 * image.width / 27) ||
+    //     (image.height / 27 < y && y < 2 * image.height / 27) ||
+    //     (7 * image.width / 27 < x && x < 8 * image.width / 27) ||
+    //     (7 * image.height / 27 < y && y < 8 * image.height / 27) ||
+    //     (19 * image.width / 27 < x && x < 20 * image.width / 27) ||
+    //     (19 * image.height / 27 < y && y < 20 * image.height / 27) ||
+    //     (25 * image.width / 27 < x && x < 26 * image.width / 27) ||
+    //     (25 * image.height / 27 < y && y < 26 * image.height / 27) ? 254 : 0;
 
     // Image5.png
-    r = toys.FractalPlus(x, y, image.width, image.height, 16);
-    // console.log(r);
+    // r = toys.FractalPlus(x, y, image.width, image.height, 5);
+
+    // Image6.png
+    r = toys.FractalPlus2(x, y, image.width, image.height, 7);
+    g = r / 2;
+    b = g / 2;
 
     return new image.pixel(r, g, b);
 }
