@@ -46,8 +46,8 @@ function getPixelColor(x, y) {
     // Image5.png
     // r = toys.FractalPlus(x, y, image.width, image.height, 5);
 
-    // Image6.png
-    r = toys.FractalPlus2(x, y, image.width, image.height, 7);
+    // Image.png
+    r = toys.FractalPlus2(x, y, image.width, image.height, 5);
     g = r / 2;
     b = g / 2;
 

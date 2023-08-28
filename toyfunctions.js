@@ -56,15 +56,16 @@ function FractalPlus2(x, y, width, height, maxDepth, currentDepth = 0) {
     }
 
     offsetIndex = 0;
+    offset = 0;
     // Top half of range.
-    // for (let d = 0; d < 2 ** (currentDepth - 1); d++) {
-    //     if (d != 0 && d % 2 == 0) {
-    //         offset += offsetList[offsetIndex++]; // Offset changes only on every other loop iteration.
-    //     }
+    for (let d = 0; d < 2 ** (currentDepth - 1); d++) {
+        if (d != 0 && d % 2 == 0) {
+            offset += offsetList[offsetIndex++]; // Offset changes only on every other loop iteration.
+        }
 
-    //     color += (((range[1] - 2) * width - (d * 6 * width) - (offset * width)) / range[1] < x && x < ((range[1] - 1) * width - (d * 6 * width) - (offset * width)) / range[1]) ? 254 / (currentDepth + 1) : 0;
-    //     color += (((range[1] - 2) * height - (d * 6 * height) - (offset * width)) / range[1] < y && y < ((range[1] - 1) * height - (d * 6 * height) - (offset * width)) / range[1]) ? 254 / (currentDepth + 1) : 0;
-    // }
+        color += (((range[1] - 2) * width - (d * 6 * width) - (offset * width)) / range[1] < x && x < ((range[1] - 1) * width - (d * 6 * width) - (offset * width)) / range[1]) ? 254 / (currentDepth + 1) : 0;
+        color += (((range[1] - 2) * height - (d * 6 * height) - (offset * height)) / range[1] < y && y < ((range[1] - 1) * height - (d * 6 * height) - (offset * height)) / range[1]) ? 254 / (currentDepth + 1) : 0;
+    }
 
     return color + FractalPlus2(x, y, width, height, maxDepth, ++currentDepth);
 }
@@ -79,7 +80,7 @@ function FractalPlus2(x, y, width, height, maxDepth, currentDepth = 0) {
 //  3, 4,         5,              6.
 function buildOffsetList(maxDepth) {
     // if (offsetList.length > 1) { return; } // Performance help.
-    let offsetList = [1];
+    let offsetList = [1]; // Would like to only set this once so it's not built every iteration.
 
     let largeOffsetCount = maxDepth - 4;
     let lastLargeNumber = 1;
