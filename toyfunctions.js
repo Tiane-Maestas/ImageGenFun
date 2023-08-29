@@ -1,4 +1,4 @@
-const { max } = require("math");
+const image = require("./image.js");
 
 let i = 1, j = 1;
 function Fib() {
@@ -34,6 +34,10 @@ module.exports.FractalPlus = FractalPlus;
 function FractalPlus2(x, y, width, height, maxDepth, currentDepth = 0) {
     if (currentDepth == maxDepth)
         return 0;
+
+    // Allows the pattern to repeat.
+    x = x % image.width;
+    y = y % image.height;
 
     let color = 0;
     if (currentDepth == 0) {

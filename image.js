@@ -1,4 +1,5 @@
-let math = require("math");
+const math = require("math");
+
 module.exports = {
     name: "Image",
     width: 1920,

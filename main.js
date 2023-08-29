@@ -1,5 +1,5 @@
-let image = require("./image.js");
-let toys = require("./toyfunctions.js");
+const image = require("./image.js");
+const toys = require("./toyfunctions.js");
 
 // Main Pixel Loop
 for (let x = 0; x < image.width; x++) {
@@ -47,7 +47,9 @@ function getPixelColor(x, y) {
     // r = toys.FractalPlus(x, y, image.width, image.height, 5);
 
     // Image.png
-    r = toys.FractalPlus2(x, y, image.width, image.height, 7);
+    let xOffset = image.width / 2;
+    let yOffset = image.height / 2;
+    r = toys.FractalPlus2(x + xOffset, y + yOffset, image.width, image.height, 5);
     g = r / 2;
     b = g / 2;
 
