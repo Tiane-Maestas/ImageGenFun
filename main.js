@@ -49,7 +49,7 @@ function getPixelColor(x, y) {
     // Image.png
     let xOffset = image.width / 2;
     let yOffset = image.height / 2;
-    r = toys.FractalPlus2(x + xOffset, y + yOffset, image.width, image.height, 5);
+    r = toys.FractalPlus2(4 * x + xOffset, 4 * y + yOffset, image.width, image.height, 5);
     g = r / 2;
     b = g / 2;
 
